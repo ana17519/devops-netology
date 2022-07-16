@@ -10,3 +10,5 @@ in terraform > .gitignore will be excluded:
 6) example_override.tf should not be ignored
 7) tfplan
 8) CLI configuration files
+
+#new line
