@@ -2,7 +2,7 @@
 
 import os
 
-dir = "C:/Users/ASukhodola/PycharmProjects/devops-netology"
+dir = "/Users/anastasiasuhodola/PycharmProjects/devops-netology"
 bash_command = ["cd " + dir, "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 #is_change = False
