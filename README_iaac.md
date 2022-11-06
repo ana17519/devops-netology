@@ -91,7 +91,7 @@ Server 2012R2+
 **Приложить вывод команд установленных версий каждой из программ, оформленный в markdown.**
 
 
-При выполнении домашних заданий первого модуля у меня не было своего личного компьютера и я использовала рабочий 
+При выполнении домашних заданий первого модуля у меня не было своего личного компьютера и я использовала временно комп 
 с ОС windows, там установив virtual box и vagrant (для выполнения домашних заданий для работы с терминалом в первом модуле).
 
 В недавнем времени купила mac m1, т.к. m1 не intel based, пришлось повозиться как на нем установить
@@ -174,13 +174,15 @@ anastasiasuhodola@MacBook-Pro-Anastasia ~ % ansible --version
 ansible [core 2.13.5]
   config file = None
   configured module search path = ['/Users/anastasiasuhodola/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']`
-`  ansible python module location = /opt/homebrew/Cellar/ansible/6.5.0/libexec/lib/python3.10/site-packages/ansible
+
+`ansible python module location = /opt/homebrew/Cellar/ansible/6.5.0/libexec/lib/python3.10/site-packages/ansible
   ansible collection location = /Users/anastasiasuhodola/.ansible/collections:/usr/share/ansible/collections
   executable location = /opt/homebrew/bin/ansible
   python version = 3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)]
   jinja version = 3.1.2
-  libyaml = True
-anastasiasuhodola@MacBook-Pro-Anastasia ~ % `
+  libyaml = True`
+
+`anastasiasuhodola@MacBook-Pro-Anastasia ~ % `
 
 
 
@@ -217,9 +219,12 @@ Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-91-generic aarch64)
 
 `This system is built by the Bento project by Chef Software
 More information can be found at https://github.com/chef/bento`
+
 `Last login: Sun Nov  6 07:06:55 2022 from 10.211.55.1
 vagrant@server1:~$ docker --version`
+
 `Docker version 20.10.21, build baeda1f
 vagrant@server1:~$ docker ps`
+
 `CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 vagrant@server1:~$ `
