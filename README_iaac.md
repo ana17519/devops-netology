@@ -226,6 +226,5 @@ vagrant@server1:~$ docker --version`
 `Docker version 20.10.21, build baeda1f
 vagrant@server1:~$ docker ps`
 
-
 `CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 vagrant@server1:~$ `
