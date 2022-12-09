@@ -332,6 +332,7 @@ ind-3	2	4
 
 Подсказки:
 
+
 возможно вам понадобится доработать elasticsearch.yml в части директивы path.repo и перезапустить elasticsearch
 
 elasticsearch.yaml:
