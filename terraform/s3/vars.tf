@@ -17,17 +17,26 @@ variable "yc_zone" {
   type    = string
   default = "ru-central1-a"
 }
+
 locals {
-#  virtual_machines = {
-#    "vm1" = 1
-#    "vm2" = 2
-#  }
+  virtual_machines = {
+    stage = {
+      "vm1" : 1,
+      "vm2" : 1,
+    },
+    prod = {
+      "vm3" : 1,
+      "vm4" : 1,
+    }
+  }
+
   count = {
     stage = 1
     prod  = 2
   }
+
   instant_types = {
     stage = "standard-v2"
-    prod = "standard-v3"
+    prod  = "standard-v3"
   }
 }
