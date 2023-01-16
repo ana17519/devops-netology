@@ -1,0 +1,11 @@
+repos:
+- id: https://github.com/ana17519/configfile
+  workflow: custom
+  allowed_overrides: [workflow]
+
+workflows:
+  custom:
+    plan:
+      steps:
+      - plan:
+          extra_args: ["-lock", "false"]
