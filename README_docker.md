@@ -24,9 +24,9 @@ Hey, Netology
 
 **Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.**
 
-![img_1.png](img_1.png)
+![img_1.png](images/img_1.png)
 
-![img.png](img.png)
+![img.png](images/img.png)
 
 
 https://hub.docker.com/repository/docker/asukhadola/netology/general
@@ -136,4 +136,4 @@ drwxr-xr-x 1 root root 4096 Nov  7 18:35 ..
 `
 
 
-![img_2.png](img_2.png)
+![img_2.png](images/img_2.png)

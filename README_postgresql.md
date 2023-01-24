@@ -7,13 +7,13 @@
 `docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust -v "/home/vagrant/postgres/db/:/var/lib/postgresql/data" -v "/home/vagrant/postgres/backup/:/tmp/backup" --rm -d postgres:13.3
 `
 
-![img_51.png](img_51.png)
+![img_51.png](images/img_51.png)
 
 Подключитесь к БД PostgreSQL используя psql.
 
 `docker exec -it postgres psql -U postgres`
 
-![img_44.png](img_44.png)
+![img_44.png](images/img_44.png)
 
 Воспользуйтесь командой \? для вывода подсказки по имеющимся в psql управляющим командам.
 
@@ -21,23 +21,23 @@
 
 вывода списка БД
 
-![img_46.png](img_46.png)
+![img_46.png](images/img_46.png)
 
 подключения к БД
 
-![img_47.png](img_47.png)
+![img_47.png](images/img_47.png)
 
 вывода списка таблиц
 
-![img_48.png](img_48.png)
+![img_48.png](images/img_48.png)
 
 вывода описания содержимого таблиц
 
-![img_49.png](img_49.png)
+![img_49.png](images/img_49.png)
 
 выхода из psql
 
-![img_50.png](img_50.png)
+![img_50.png](images/img_50.png)
 
 
 **Задача 2**
@@ -56,7 +56,7 @@ You are now connected to database "test_database" as user "postgres".
 
 test_database=# `\i /tmp/backup/test_dump.sql`
 
-![img_52.png](img_52.png)
+![img_52.png](images/img_52.png)
 
 Перейдите в управляющую консоль psql внутри контейнера.
 
@@ -64,13 +64,13 @@ test_database=# `\i /tmp/backup/test_dump.sql`
 
 test_database=# `ANALYZE VERBOSE public.orders;`
 
-![img_53.png](img_53.png)
+![img_53.png](images/img_53.png)
 
 Используя таблицу pg_stats, найдите столбец таблицы orders с наибольшим средним значением размера элементов в байтах.
 
 test_database=# `SELECT tablename,attname,avg_width FROM pg_stats WHERE tablename='orders' ORDER BY avg_width DESC LIMIT 1;`
 
-![img_55.png](img_55.png)
+![img_55.png](images/img_55.png)
 
 Приведите в ответе команду, которую вы использовали для вычисления и полученный результат.
 
@@ -98,7 +98,7 @@ test_database=# `SELECT tablename,attname,avg_width FROM pg_stats WHERE tablenam
 
 `COMMIT;`
 
-![img_54.png](img_54.png)
+![img_54.png](images/img_54.png)
 
 
 Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
@@ -112,7 +112,7 @@ test_database=# `SELECT tablename,attname,avg_width FROM pg_stats WHERE tablenam
 
 `pg_dump -U postgres test_database > my_dump.sql`
 
-![img_56.png](img_56.png)
+![img_56.png](images/img_56.png)
 
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца title для таблиц test_database?
 

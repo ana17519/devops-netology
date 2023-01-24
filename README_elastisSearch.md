@@ -67,7 +67,7 @@
 
 `CMD ["sh", "-c", "${ES_HOME}/bin/elasticsearch"]`
 
-![img_74.png](img_74.png)
+![img_74.png](images/img_74.png)
 
 build:
 
@@ -77,11 +77,11 @@ build:
 
 `docker exec -it bbb bash`
 
-![img_58.png](img_58.png)
+![img_58.png](images/img_58.png)
 
 * ссылку на образ в репозитории dockerhub - https://hub.docker.com/repository/docker/asukhadola/bbb
 
-![img_75.png](img_75.png)
+![img_75.png](images/img_75.png)
 
 * ответ elasticsearch на запрос пути / в json виде
 
@@ -121,7 +121,7 @@ build:
 
 `}`
 
-![img_60.png](img_60.png)
+![img_60.png](images/img_60.png)
 
 Подсказки:
 
@@ -178,19 +178,19 @@ ind-3	2	4
 }
 '`
 
-![img_59.png](img_59.png)
+![img_59.png](images/img_59.png)
 
 **Получите список индексов и их статусов, используя API и приведите в ответе на задание.**
 
 `curl 'localhost:9200/_cat/indices?v'`
 
-![img_57.png](img_57.png)
+![img_57.png](images/img_57.png)
 
 **Получите состояние кластера elasticsearch, используя API.**
 
 `curl -X GET "localhost:9200/_cluster/health?pretty"`
 
-![img_61.png](img_61.png)
+![img_61.png](images/img_61.png)
 
 **Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?**
 
@@ -200,7 +200,7 @@ ind-3	2	4
 
 `curl -X DELETE 'http://localhost:9200/_all'`
 
-![img_62.png](img_62.png)
+![img_62.png](images/img_62.png)
 
 Важно
 
@@ -224,9 +224,9 @@ ind-3	2	4
 
 `path.repo: "/var/lib/elasticsearch/snapshots"`
 
-![img_64.png](img_64.png)
+![img_64.png](images/img_64.png)
 
-![img_63.png](img_63.png)
+![img_63.png](images/img_63.png)
 
 `curl -X PUT "localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'`
 
@@ -244,7 +244,7 @@ ind-3	2	4
 
 `}'`
 
-![img_65.png](img_65.png)
+![img_65.png](images/img_65.png)
 
 Приведите в ответе запрос API и результат вызова API для создания репозитория.
 
@@ -268,25 +268,25 @@ ind-3	2	4
 
 `curl 'localhost:9200/_cat/indices?v'`
 
-![img_66.png](img_66.png)
+![img_66.png](images/img_66.png)
 
 Создайте snapshot состояния кластера elasticsearch.
 
 `curl -X PUT "localhost:9200/_snapshot/netology_backup/snapshot_1?wait_for_completion=true&pretty"`
 
-![img_67.png](img_67.png)
+![img_67.png](images/img_67.png)
 
 Приведите в ответе список файлов в директории со snapshotами.
 
 `ls -l /var/lib/elasticsearch/snapshots/`
 
-![img_68.png](img_68.png)
+![img_68.png](images/img_68.png)
 
 Удалите индекс test и создайте индекс test-2. Приведите в ответе список индексов.
 
 `curl -X DELETE "localhost:9200/test?pretty"`
 
-![img_69.png](img_69.png)
+![img_69.png](images/img_69.png)
 
 `curl -X PUT "localhost:9200/test-2?pretty" -H 'Content-Type: application/json' -d'`
 
@@ -308,7 +308,7 @@ ind-3	2	4
 
 `curl 'localhost:9200/_cat/indices?pretty'`
 
-![img_70.png](img_70.png)
+![img_70.png](images/img_70.png)
 
 Восстановите состояние кластера elasticsearch из snapshot, созданного ранее.
 
@@ -328,7 +328,7 @@ ind-3	2	4
 
 Приведите в ответе запрос к API восстановления и итоговый список индексов.
 
-![img_71.png](img_71.png)
+![img_71.png](images/img_71.png)
 
 Подсказки:
 
@@ -337,5 +337,5 @@ ind-3	2	4
 
 elasticsearch.yaml:
 
-![img_72.png](img_72.png)
-![img_73.png](img_73.png)
+![img_72.png](images/img_72.png)
+![img_73.png](images/img_73.png)

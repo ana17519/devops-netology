@@ -18,7 +18,7 @@
 
 `test_db=# `
 
-![img_27.png](img_27.png)
+![img_27.png](images/img_27.png)
 
 **Задача 2**
 
@@ -30,7 +30,7 @@
 
 `CREATE DATABASE test_db;`
 
-![img_28.png](img_28.png)
+![img_28.png](images/img_28.png)
 
 в БД test_db создайте таблицу orders и clients (спeцификация таблиц ниже)
 
@@ -47,13 +47,13 @@
 	order_number	integer REFERENCES orders
 );`
 
-![img_29.png](img_29.png)
+![img_29.png](images/img_29.png)
 
 предоставьте привилегии на все операции пользователю test-admin-user на таблицы БД test_db
 
 `GRANT ALL ON orders, clients TO "test-admin-user";`
 
-![img_30.png](img_30.png)
+![img_30.png](images/img_30.png)
 
 создайте пользователя test-simple-user
 
@@ -63,7 +63,7 @@
 
 `GRANT SELECT,INSERT,UPDATE,DELETE ON orders, clients to "test-simple-user";`
 
-![img_31.png](img_31.png)
+![img_31.png](images/img_31.png)
 
 
 **Таблица orders:**
@@ -93,7 +93,7 @@ id (serial primary key)
 `SELECT table_name FROM information_schema.tables
 WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 
-![img_32.png](img_32.png)
+![img_32.png](images/img_32.png)
 
 **описание таблиц (describe)**
 
@@ -101,7 +101,7 @@ WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 
 `\d+ clients`
 
-![img_33.png](img_33.png)
+![img_33.png](images/img_33.png)
 
 **SQL-запрос для выдачи списка пользователей с правами над таблицами test_db**
 
@@ -109,7 +109,7 @@ WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 FROM information_schema.table_privileges
 WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 
-![img_34.png](img_34.png)
+![img_34.png](images/img_34.png)
 
 
 **список пользователей с правами над таблицами test_db**
@@ -118,7 +118,7 @@ WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 FROM information_schema.table_privileges
 WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 
-![img_34.png](img_34.png)
+![img_34.png](images/img_34.png)
 
 
 **Задача 3**
@@ -142,7 +142,7 @@ WHERE table_schema NOT IN ('information_schema','pg_catalog');`
 `INSERT INTO orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
 `
 
-![img_35.png](img_35.png)
+![img_35.png](images/img_35.png)
 
 **Таблица clients**
 
@@ -160,7 +160,7 @@ Ritchie Blackmore	Russia
 
 `INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');`
 
-![img_36.png](img_36.png)
+![img_36.png](images/img_36.png)
 
 Используя SQL синтаксис:
 
@@ -170,7 +170,7 @@ Ritchie Blackmore	Russia
 
 ` SELECT count(*) FROM orders;`
 
-![img_37.png](img_37.png)
+![img_37.png](images/img_37.png)
 
 
 приведите в ответе:
@@ -202,7 +202,7 @@ Ritchie Blackmore	Russia
 
 `UPDATE clients SET order_number = (SELECT id FROM orders WHERE order_name = 'Гитара') WHERE last_name = 'Иоганн Себастьян Бах';`
 
-![img_13.png](img_13.png)
+![img_13.png](images/img_13.png)
 
 
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.
@@ -211,7 +211,7 @@ Ritchie Blackmore	Russia
 
 Подсказка - используйте директиву UPDATE.
 
-![img_14.png](img_14.png)
+![img_14.png](images/img_14.png)
 
 
 **Задача 5**
@@ -222,7 +222,7 @@ Ritchie Blackmore	Russia
 
 `EXPLAIN SELECT * FROM clients WHERE order_number IS NOT NULL;`
 
-![img_15.png](img_15.png)
+![img_15.png](images/img_15.png)
 
 cost - стоимость операции, row - ожидаемое число строк, width - средняя ширина строки в байтах
 
@@ -262,5 +262,5 @@ cost - стоимость операции, row - ожидаемое число 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления.
 
 
-![img_17.png](img_17.png)
+![img_17.png](images/img_17.png)
 

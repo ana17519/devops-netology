@@ -15,7 +15,7 @@
 Воспользуйтесь инструкцией на сайте терраформа, что бы не указывать авторизационный токен в коде, 
 а терраформ провайдер брал его из переменных окружений.
 
-![img_78.png](img_78.png)
+![img_78.png](images/img_78.png)
 
 **Задача 2. Создание yandex_compute_instance через терраформ.**
 
@@ -42,24 +42,24 @@ yandex_compute_instance создан:
 
 terraform init:
 
-![img_80.png](img_80.png)
+![img_80.png](images/img_80.png)
 
 terraform plan:
-![img_81.png](img_81.png)
-![img_82.png](img_82.png)
-![img_83.png](img_83.png)
-![img_84.png](img_84.png)
+![img_81.png](images/img_81.png)
+![img_82.png](images/img_82.png)
+![img_83.png](images/img_83.png)
+![img_84.png](images/img_84.png)
 
 terraform apply:
-![img_86.png](img_86.png)
-![img_87.png](img_87.png)
-![img_88.png](img_88.png)
-![img_89.png](img_89.png)
-![img_90.png](img_90.png)
+![img_86.png](images/img_86.png)
+![img_87.png](images/img_87.png)
+![img_88.png](images/img_88.png)
+![img_89.png](images/img_89.png)
+![img_90.png](images/img_90.png)
 
 Созданный инстанс в интерфейсе:
 
-![img_91.png](img_91.png)
+![img_91.png](images/img_91.png)
 
 В качестве результата задания предоставьте:
 

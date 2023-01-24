@@ -25,7 +25,7 @@ created_at: "2022-12-17T15:45:23.913794097Z"
 name: default
 description: service account`
 
-![img_85.png](img_85.png)
+![img_85.png](images/img_85.png)
 
 создание ключа:
 
@@ -42,7 +42,7 @@ access_key:
   key_id: YCAJEb_yGszI67YxlnKuVcrWv
 secret: YCMOSkHvfbTEFkntLlyacBTPwq0-zG8bTqlfs8X8`
 
-![img_92.png](img_92.png)
+![img_92.png](images/img_92.png)
 
 Добавить права админа:
 
@@ -50,11 +50,11 @@ secret: YCMOSkHvfbTEFkntLlyacBTPwq0-zG8bTqlfs8X8`
   --role admin \
   --subject serviceAccount:aje4ofq2hpt96gqf6s7k`
 
-![img_97.png](img_97.png)
+![img_97.png](images/img_97.png)
 
 бакет:
 
-![img_93.png](img_93.png) 
+![img_93.png](images/img_93.png) 
 
 
 **Задача 2. Инициализируем проект и создаем воркспейсы.**
@@ -65,11 +65,11 @@ secret: YCMOSkHvfbTEFkntLlyacBTPwq0-zG8bTqlfs8X8`
 
 иначе будет создан локальный файл со стейтами.
 
-![img_95.png](img_95.png)
+![img_95.png](images/img_95.png)
 
 2. Создайте два воркспейса stage и prod.
 
-![img_94.png](img_94.png)
+![img_94.png](images/img_94.png)
 
 3. В уже созданный aws_instance добавьте зависимость типа инстанса от вокспейса, что бы в разных ворскспейсах 
 использовались разные instance_type.
@@ -78,32 +78,32 @@ secret: YCMOSkHvfbTEFkntLlyacBTPwq0-zG8bTqlfs8X8`
 
 в файле [main.tf](terraform/s3/main.tf) -  resource "yandex_compute_instance" **"vm"** {...}
 
-![img_129.png](img_129.png)
+![img_129.png](images/img_129.png)
 
 terraform plan:
 
-![img_99.png](img_99.png)
-![img_100.png](img_100.png)
-![img_101.png](img_101.png)
-![img_102.png](img_102.png)
-![img_103.png](img_103.png)
-![img_104.png](img_104.png)
-![img_114.png](img_114.png)
-![img_115.png](img_115.png)
+![img_99.png](images/img_99.png)
+![img_100.png](images/img_100.png)
+![img_101.png](images/img_101.png)
+![img_102.png](images/img_102.png)
+![img_103.png](images/img_103.png)
+![img_104.png](images/img_104.png)
+![img_114.png](images/img_114.png)
+![img_115.png](images/img_115.png)
 
 terraform apply:
 
-![img_105.png](img_105.png)
-![img_106.png](img_106.png)
-![img_107.png](img_107.png)
-![img_108.png](img_108.png)
-![img_109.png](img_109.png)
-![img_110.png](img_110.png)
-![img_111.png](img_111.png)
-![img_112.png](img_112.png)
-![img_113.png](img_113.png)
+![img_105.png](images/img_105.png)
+![img_106.png](images/img_106.png)
+![img_107.png](images/img_107.png)
+![img_108.png](images/img_108.png)
+![img_109.png](images/img_109.png)
+![img_110.png](images/img_110.png)
+![img_111.png](images/img_111.png)
+![img_112.png](images/img_112.png)
+![img_113.png](images/img_113.png)
 
-![img_98.png](img_98.png)
+![img_98.png](images/img_98.png)
 
 5. Создайте рядом еще один aws_instance, но теперь определите их количество при помощи for_each, а не count.
 
@@ -111,22 +111,22 @@ terraform apply:
 
 terraform plan:
 
-![img_116.png](img_116.png)
-![img_117.png](img_117.png)
-![img_118.png](img_118.png)
-![img_119.png](img_119.png)
-![img_120.png](img_120.png)
-![img_121.png](img_121.png)
+![img_116.png](images/img_116.png)
+![img_117.png](images/img_117.png)
+![img_118.png](images/img_118.png)
+![img_119.png](images/img_119.png)
+![img_120.png](images/img_120.png)
+![img_121.png](images/img_121.png)
 
 terraform apply:
 
-![img_122.png](img_122.png)
-![img_123.png](img_123.png)
-![img_124.png](img_124.png)
-![img_125.png](img_125.png)
-![img_126.png](img_126.png)
-![img_127.png](img_127.png)
-![img_128.png](img_128.png)
+![img_122.png](images/img_122.png)
+![img_123.png](images/img_123.png)
+![img_124.png](images/img_124.png)
+![img_125.png](images/img_125.png)
+![img_126.png](images/img_126.png)
+![img_127.png](images/img_127.png)
+![img_128.png](images/img_128.png)
 
 6. Что бы при изменении типа инстанса не возникло ситуации, когда не будет ни одного инстанса добавьте параметр жизненного цикла create_before_destroy = true в один из рессурсов aws_instance.
 
@@ -134,7 +134,7 @@ terraform apply:
 
 В ui 4 виртуальных машины запущено:
 
-![img_96.png](img_96.png)
+![img_96.png](images/img_96.png)
 
 файлы:
 

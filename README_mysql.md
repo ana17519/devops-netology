@@ -17,7 +17,7 @@
 
 `docker exec -it mysql1 bash`
 
-![img_19.png](img_19.png)
+![img_19.png](images/img_19.png)
 
 **Изучите бэкап БД и восстановитесь из него.**
 
@@ -25,17 +25,17 @@
 
 `mysql test_db < /tmp/backup/test_dump.sql`
 
-![img_18.png](img_18.png)
+![img_18.png](images/img_18.png)
 
 **Перейдите в управляющую консоль mysql внутри контейнера.**
 
 bash-4.4#` mysql -u root -p`
 
-![img_20.png](img_20.png)
+![img_20.png](images/img_20.png)
 
 **Используя команду \h получите список управляющих команд.**
 
-![img_21.png](img_21.png)
+![img_21.png](images/img_21.png)
 
 **Найдите команду для выдачи статуса БД и приведите в ответе из ее вывода версию сервера БД.**
 
@@ -43,7 +43,7 @@ bash-4.4#` mysql -u root -p`
 --------------
 `mysql  Ver 8.0.31 for Linux on aarch64 (MySQL Community Server - GPL)`
 
-![img_22.png](img_22.png)
+![img_22.png](images/img_22.png)
 
 **Подключитесь к восстановленной БД и получите список таблиц из этой БД.**
 
@@ -51,11 +51,11 @@ bash-4.4#` mysql -u root -p`
 
 `mysql> show tables;`
 
-![img_23.png](img_23.png)
+![img_23.png](images/img_23.png)
 
 **Приведите в ответе количество записей с price > 300.**
 
-![img_24.png](img_24.png)
+![img_24.png](images/img_24.png)
 
 **В следующих заданиях мы будем продолжать работу с данным контейнером.**
 
@@ -89,18 +89,18 @@ bash-4.4#` mysql -u root -p`
 
 `SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES where user='test';`
 
-![img_25.png](img_25.png)
+![img_25.png](images/img_25.png)
 
 
 **Задача 3**
 
 **Установите профилирование SET profiling = 1. Изучите вывод профилирования команд SHOW PROFILES;.**
 
-![img_26.png](img_26.png)
+![img_26.png](images/img_26.png)
 
 **Исследуйте, какой engine используется в таблице БД test_db и приведите в ответе.**
 
-![img_38.png](img_38.png)
+![img_38.png](images/img_38.png)
 
 **Измените engine и приведите время выполнения и запрос на изменения из профайлера в ответе:**
 
@@ -108,7 +108,7 @@ bash-4.4#` mysql -u root -p`
 
 **на InnoDB** -- 0.02470425 
 
-![img_39.png](img_39.png)
+![img_39.png](images/img_39.png)
 
 
 **Задача 4**
@@ -147,11 +147,11 @@ bash-4.4# `cat /etc/mysql/my.cnf`
 
 `cat: /etc/mysql/my.cnf: No such file or directory`
 
-![img_41.png](img_41.png)
+![img_41.png](images/img_41.png)
 
 bash-4.4# `nano my.cnf`
 
-![img_40.png](img_40.png)
+![img_40.png](images/img_40.png)
 
 ответ:
 
@@ -174,10 +174,10 @@ innodb_log_buffer_size = 1M
 
 innodb_buffer_pool_size = 300M
 
-![img_42.png](img_42.png)
+![img_42.png](images/img_42.png)
 
 **Размер файла логов операций 100 Мб**
 
 innodb_log_file_size = 100M
 
-![img_43.png](img_43.png)
+![img_43.png](images/img_43.png)

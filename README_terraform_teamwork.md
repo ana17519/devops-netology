@@ -27,18 +27,18 @@ terraform {
   }
   ...
 ```
-![img_130.png](img_130.png)
+![img_130.png](images/img_130.png)
 
-![img_138.png](img_138.png)
+![img_138.png](images/img_138.png)
 
 plan:
-![img_139.png](img_139.png)
+![img_139.png](images/img_139.png)
 
 apply:
-![img_140.png](img_140.png)
+![img_140.png](images/img_140.png)
 
 ui:
-![img_141.png](img_141.png)
+![img_141.png](images/img_141.png)
 
 repo:  [https://github.com/ana17519/configfile/tree/main/terraform](https://github.com/ana17519/configfile/tree/main/terraform)
 
@@ -99,14 +99,14 @@ modules
   vars.tf - значения переменных
 ```
 
-![img_142.png](img_142.png)
-![img_143.png](img_143.png)
-![img_144.png](img_144.png)
-![img_145.png](img_145.png)
-![img_146.png](img_146.png)
+![img_142.png](images/img_142.png)
+![img_143.png](images/img_143.png)
+![img_144.png](images/img_144.png)
+![img_145.png](images/img_145.png)
+![img_146.png](images/img_146.png)
 
  applying:
-![img_147.png](img_147.png)
+![img_147.png](images/img_147.png)
 
 user interface:
-![img_148.png](img_148.png)
+![img_148.png](images/img_148.png)

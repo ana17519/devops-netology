@@ -66,8 +66,8 @@ Terraform, Ansible, Packer, Docker, Kubernetes
 
 В виде результата этой задачи приложите вывод команды terraform --version.
 
-![img_76.png](img_76.png)
-![img_77.png](img_77.png)
+![img_76.png](images/img_76.png)
+![img_77.png](images/img_77.png)
 
 **Задача 3. Поддержка легаси кода.**
 
@@ -81,4 +81,4 @@ Terraform, Ansible, Packer, Docker, Kubernetes
 <!--https://opensource.com/article/20/11/tfenv-->
 Использовала tfenv: https://github.com/tfutils/tfenv
 
-![img_79.png](img_79.png)
+![img_79.png](images/img_79.png)
