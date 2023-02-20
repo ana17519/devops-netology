@@ -6,7 +6,7 @@
 * Создайте два пустых публичных репозитория в любом своём проекте: vector-role и lighthouse-role.
 * Добавьте публичную часть своего ключа к своему профилю в github.
 
-![img.png](img185.png)
+![img.png](images/img185.png)
 
 **Основная часть**
 
@@ -29,16 +29,16 @@
 
 `ansible-galaxy install -r requirements.yml -p roles`
 
-![img.png](img186.png)
+![img.png](images/img186.png)
 
 3. Создать новый каталог с ролью при помощи ansible-galaxy role init vector-role.
 
-![img.png](img187.png)
+![img.png](images/img187.png)
 
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между vars и default.
 
-![img.png](img188.png)
-![img.png](img189.png)
+![img.png](images/img188.png)
+![img.png](images/img189.png)
 
 5. Перенести нужные шаблоны конфигов в templates.
 6. Описать в README.md обе роли и их параметры.
@@ -54,3 +54,6 @@
 **vector**: [https://github.com/ana17519/vector-role/tree/1.0.0](https://github.com/ana17519/vector-role/tree/1.0.0)
 
 **playbook**: [https://github.com/ana17519/practise-playbook/tree/feature/roles](https://github.com/ana17519/practise-playbook/tree/feature/roles)
+
+feature/roles скопирована в другой репозиторий: [https://github.com/ana17519/practise-roles](https://github.com/ana17519/practise-roles),
+т.е. https://github.com/ana17519/practise-roles (ветка main) = https://github.com/ana17519/practise-playbook/tree/feature/roles
