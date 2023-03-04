@@ -1,0 +1,27 @@
+properties(
+    [
+        parameters([
+                string(defaultValue: 'False', name: 'prod_run')
+        ])
+    ]
+)
+node("linux"){
+    stage("Git checkout"){
+        git branch: 'feature/jenkins', credentialsId: 'da5cf165-10a6-4a61-a089-d04b6a045510', url: 'git@github.com:ana17519/practise-ansible.git'
+    }
+    stage("Sample define secret_check"){
+        secret_check=true
+    }
+    stage("Run playbook"){
+        if (secret_check){
+            if(params.prod_run == 'True'){
+                sh 'ansible-playbook site.yml -i inventory/test.yml'
+            } else{
+                sh 'ansible-playbook site.yml -i inventory/test.yml --check --diff'
+            }
+        }
+        else{
+            echo 'need more action'
+        }
+    }
+}
