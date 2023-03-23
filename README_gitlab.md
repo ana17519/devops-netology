@@ -26,27 +26,16 @@
 * [ссылка на репозиторий](https://gitlab.com/Ana17519/gitlab-test/-/tree/main)
 * [Dockerfile](https://gitlab.com/Ana17519/gitlab-test/-/blob/main/Dockerfile)
 * [gitlab-ci.yml](https://gitlab.com/Ana17519/gitlab-test/-/blob/main/.gitlab-ci.yml)
-* первая часть по build образа прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3975200282)
-* вторая часть с поднятием pod kubernetes падает с ошибкой, раннер поднят [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3975200282)
+* первая часть по build образа прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3986224197)
+* вторая часть с поднятием pod kubernetes прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3986248935)
 
-```
-Running with gitlab-runner 15.10.0 (456e3482)
-  on gitlab-runner-8557cd6ff-ntqnt yKbizUgM, system ID: r_WO8Tl1H9pdUD
-Preparing the "kubernetes" executor
-00:00
-Using Kubernetes namespace: default
-Using Kubernetes executor with image gcr.io/cloud-builders/kubectl:latest ...
-Using attach strategy to execute scripts...
-Preparing environment
-03:04
-Waiting for pod default/runner-ykbizugm-project-44305298-concurrent-05fdqt to be running, status is Pending
-	Unschedulable: "0/1 nodes are available: 1 Too many pods."`
-```
+![img.png](images/img259.png)
+![img.png](images/img260.png)
 
-![img.png](img259.png)
-![img.png](img260.png)
-![img.png](img261.png)
-![img.png](img262.png)
+Количество узлов - увеличено до 5 штук:
+
+![img.png](images/img261.png)
+![img.png](images/img262.png)
 
 **Product Owner**
 
@@ -78,7 +67,7 @@ GET /rest/api/get_info, необходимо создать Issue в котор�
 1. Поднять докер-контейнер с образом python-api:latest и проверить возврат метода на корректность.
 2. Закрыть Issue с комментарием об успешности прохождения, указав желаемый результат и фактически достигнутый.
 
-![img.png](img263.png)
+![img.png](images/img263.png)
 
 
 **Необязательная часть**
@@ -109,6 +98,6 @@ test:
 
 успешно прошла [джоба](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3976289863) :
 
-![img.png](img264.png)
+![img.png](images/img264.png)
 
 [Issue added ](https://gitlab.com/Ana17519/gitlab-test/-/issues/1)
