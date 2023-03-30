@@ -39,8 +39,13 @@ Filebeat следует сконфигурировать для отправки
 * docker-compose манифест (если вы не использовали директорию help);
 * ваши yml-конфигурации для стека (если вы не использовали директорию help).
 
-![img.png](img280.png)
-![img.png](img281.png)
+![img_1.png](images/img281.png)
+![img_4.png](images/img284.png)
+
+[docker-compose манифест](elastic/home/docker-compose.yml) 
+
+[yml-конфигурации для стека](elastic/home/configs)
+
 
 **Задание 2**
 
@@ -55,5 +60,9 @@ Filebeat следует сконфигурировать для отправки
 Эти логи должны порождать индекс `logstash-*` в elasticsearch. 
 Если этого индекса нет — воспользуйтесь советами и источниками из раздела «Дополнительные ссылки» этого задания.
 
-![img.png](img283.png)
-![img.png](img282.png)
+![img.png](images/img283.png)
+![img_2.png](images/img282.png)
+![img.png](images/img285.png)
+
+вместо `logstash-*` `docker-*` 
+![img.png](images/img280.png)

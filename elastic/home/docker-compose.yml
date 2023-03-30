@@ -1,12 +1,12 @@
-version: '2.2'
+version: '2.5'
 services:
 
   es-hot:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    image: elasticsearch:7.17.7
     container_name: es-hot
     environment:
       - node.name=es-hot
-      - cluster.name=es-docker-cluster
+      - cluster.name=es-cluster
       - discovery.seed_hosts=es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
       - bootstrap.memory_lock=true
@@ -21,19 +21,22 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+    cap_add:
+      - IPC_LOCK
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
       - elastic
     depends_on:
       - es-warm
 
   es-warm:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    image: elasticsearch:7.17.7
     container_name: es-warm
     environment:
       - node.name=es-warm
-      - cluster.name=es-docker-cluster
+      - cluster.name=es-cluster
       - discovery.seed_hosts=es-hot
       - cluster.initial_master_nodes=es-hot,es-warm
       - bootstrap.memory_lock=true
@@ -48,11 +51,13 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+    cap_add:
+      - IPC_LOCK
     networks:
       - elastic
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.11.0
+    image: kibana:7.17.7
     container_name: kibana
     ports:
       - 5601:5601
@@ -65,31 +70,33 @@ services:
       - es-hot
       - es-warm
 
-  logstash:
-    image: docker.elastic.co/logstash/logstash:7.11.0
-    container_name: logstash
-    ports:
-      - 5046:5046
-    volumes:
-      - ./configs/logstash.conf:/etc/logstash/conf.d/logstash.conf:Z
-      - ./configs/logstash.yml:/opt/logstash/config/logstash.yml:Z
-    networks:
-      - elastic
-    depends_on:
-      - es-hot
-      - es-warm
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.17.7
+#    container_name: logstash
+#    ports:
+#      - 5046:5046
+#    volumes:
+#      - ./configs/logstash.conf:/usr/share/logstash/config/logstash.conf:Z
+#      - ./configs/logstash.yml:/usr/share/logstash/config/logstash.yml:Z
+#    networks:
+#      - elastic
+#    depends_on:
+#      - es-hot
+#      - es-warm
 
-  filebeat:
-    image: "docker.elastic.co/beats/filebeat:7.2.0"
-    container_name: filebeat
-    privileged: true
-    user: root
-    volumes:
-      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:Z
-      - /var/lib/docker:/var/lib/docker:Z
-      - /var/run/docker.sock:/var/run/docker.sock:Z
-    depends_on:
-      - logstash
+#  filebeat:
+#    image: docker.elastic.co/beats/filebeat:7.17.7
+#    container_name: filebeat
+#    privileged: true
+#    user: root
+#    volumes:
+#      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+#      - /Users/anastasiasuhodola/Library/Containers/com.docker.docker/Data/log/host:/var/lib/docker:Z
+#      - /Users/anastasiasuhodola/.docker/run/docker.sock:/var/run/docker.sock:Z
+#    depends_on:
+#      - logstash
+#    networks:
+#      - elastic
 
   some_application:
     image: library/python:3.9-alpine
@@ -97,6 +104,28 @@ services:
     volumes:
       - ./pinger/run.py:/opt/run.py:Z
     entrypoint: python3 /opt/run.py
+    networks:
+      - elastic
+    logging:
+      driver: fluentd
+      options:
+        tag: some_app
+    depends_on:
+      - fluent-bit
+
+  fluent-bit:
+    container_name: fluent-bit
+    image: fluent/fluent-bit:1.8
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    volumes:
+      - ./configs/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
+      - ./configs/parsers.conf:/fluent-bit/parsers/parsers.conf:ro
+    depends_on:
+      - es-hot
+    networks:
+      - elastic
 
 volumes:
   data01:
