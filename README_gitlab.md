@@ -29,6 +29,26 @@
 * первая часть по build образа прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3986224197)
 * вторая часть с поднятием pod kubernetes прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/3986248935)
 
+**после обновления Dockerfile (добавлен python версии 3/7)первая часть по build образа прошла успешно [ссылка](https://gitlab.com/Ana17519/gitlab-test/-/jobs/4053172957)**
+
+dockerfile:
+
+```
+FROM centos:7
+RUN yum makecache \
+    && yum install -y gcc openssl-devel bzip2-devel libffi-devel wget make
+RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \
+    && tar xzf Python-3.7.0.tgz \
+    && cd Python-3.7.0 \
+    && ./configure --enable-optimizations \
+    && make altinstall \
+    && rm -rf ../Python-3.7.0.tgz ../Python-3.7.0
+COPY python-api.py /opt/python_api/python-api.py
+RUN pip3.7 install -U  --upgrade pip && pip3.7 install flask flask-jsonpify flask-restful
+EXPOSE 5290
+CMD ["python3.7", "/opt/python_api/python-api.py"]
+```
+
 ![img.png](images/img259.png)
 ![img.png](images/img260.png)
 
