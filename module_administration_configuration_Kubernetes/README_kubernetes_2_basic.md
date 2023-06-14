@@ -22,7 +22,7 @@
 2. Использовать image - `gcr.io/kubernetes-e2e-test-images/echoserver:2.2`.
 3. Подключиться локально к Pod с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
-[манифест](/Users/anastasiasuhodola/PycharmProjects/devops-netology/module_administration_configuration_Kubernetes/k8_yaml/helloWorld.yaml)
+[манифест](k8_yaml/helloWorld.yaml)
 
 ![img_4.png](../images/img328.png)
 ![img_5.png](../images/img329.png)
@@ -35,7 +35,7 @@
 3. Создать Service с именем `netology-svc` и подключить к `netology-web`.
 4. Подключиться локально к Service с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
-[манифест](/Users/anastasiasuhodola/PycharmProjects/devops-netology/module_administration_configuration_Kubernetes/k8_yaml/netologyWeb.yaml)
+[манифест](k8_yaml/netologyWeb.yaml)
 
 ![img_2.png](../images/img326.png)
 
