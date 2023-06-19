@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-multi-task1
+  labels:
+    app: nginx-multi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-multi
+  template:
+    metadata:
+      labels:
+        app: nginx-multi
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+      - name: network-multitool
+        image: wbitt/network-multitool
+        env:
+        - name: HTTP_PORT
+          value: "1180"
+        - name: HTTPS_PORT
+          value: "11443"
+        ports:
+        - containerPort: 1180
+          name: http-port
+        - containerPort: 11443
+          name: https-port
+        resources:
+          requests:
+            cpu: "1m"
+            memory: "20Mi"
+          limits:
+            cpu: "10m"
+            memory: "20Mi"
+        securityContext:
+          runAsUser: 0
+          capabilities:
+            add: ["NET_ADMIN"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-multi-task1-s
+spec:
+  selector:
+    app: nginx-multi
+  ports:
+  type: ClusterIP
+  ports:
+  - port: 1111
+    targetPort: 80
+    protocol: TCP
+    name: port-1
+  - port: 2222
+    targetPort: 1180
+    protocol: TCP
+    name: port-2
+  - port: 3333
+    targetPort: 11443
+    protocol: TCP
+    name: port-3
+#    kubectl expose deployment/nginx-multitool-deployment - название deployment
+#    kubectl describe svc nginx-multitool-deployment
+
+# Running the multitool on Kubernetes using the POD network is as simple as:
+# kubectl run nginx-multi-task1-p --image wbitt/network-multitool
+#  kubectl exec --stdin --tty nginx-multi-task1-p -- /bin/bash
