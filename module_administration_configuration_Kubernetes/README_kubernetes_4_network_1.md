@@ -49,9 +49,7 @@
 2. Продемонстрировать доступ с помощью браузера или `curl` с локального компьютера.
 3. Предоставить манифест и `Service` в решении, а также скриншоты или вывод команды п.2.
 
-![img_8.png](../images/img351.png)
-![img_9.png](../images/img352.png)
-![img_10.png](../images/img353.png)
-![img_11.png](../images/img354.png)
+![img.png](../images/img351.png)
+![img_1.png](../images/img352.png)
 
 [манифест](k8_yaml/service_network_task2_hm4.yaml)

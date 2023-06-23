@@ -10,13 +10,16 @@ spec:
   ports:
   type: NodePort
   ports:
-  - port: 30011
+  - port: 80
     targetPort: 80
     protocol: TCP
+    nodePort: 30020
     name: port-1
-  - port: 30010
+  - port: 8080
     targetPort: 8080
     protocol: TCP
+    nodePort: 30021
     name: port-2
-#    kubectl expose deployment/nginx-multitool-deployment - название deployment
-#    kubectl describe svc nginx-multitool-deployment
+# kubectl expose deployment/nginx-multi-network-task1 --type=NodePort - название deployment
+# kubectl describe svc nginx-multi-network-task1
+# You can access your application by entering `http://<public-node-ip>:<node-port>` in your browser.
