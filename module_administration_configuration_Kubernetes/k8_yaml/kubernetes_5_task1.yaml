@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: ks0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ks
+  template:
+    metadata:
+      labels:
+        app: ks
+    spec:
+      containers:
+      - name: network-multitool
+        image: wbitt/network-multitool
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        ports:
+        - containerPort: 8080
+          name: http-port
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: ks
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ks
+  template:
+    metadata:
+      labels:
+        app: ks
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-backend-svc
+spec:
+  selector:
+    app: ks
+  ports:
+  type: ClusterIP
+  ports:
+  - port: 1111
+    targetPort: 80
+    name: nginx
+  - port: 2222
+    targetPort: 8080
+    name: multitool
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netology-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: micro.ru-central1.internal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-backend-svc
+            port:
+              name: nginx
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-backend-svc
+            port:
+              name: multitool
+
+#    kubectl expose deployment/nginx-multitool-deployment - название deployment
+#    kubectl describe svc nginx-multitool-deployment
+
+# Running the multitool on Kubernetes using the POD network is as simple as:
+# kubectl run nginx-multi-network-task1-p --image wbitt/network-multitool
+#  kubectl exec --stdin --tty nginx-multi-network-task1-p -- /bin/bash
