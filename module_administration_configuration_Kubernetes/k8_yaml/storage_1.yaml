@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage
+  labels:
+    app: storage-vol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-vol
+  template:
+    metadata:
+      labels:
+        app: storage-vol
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        ports:
+        - containerPort: 8082
+        command: ['sh', '-c', 'while :; do sleep 5; echo Success!123; done > /input/success.txt']
+        volumeMounts:
+        - name: vol
+          mountPath: /input
+      - name: network-multitool
+        image: wbitt/network-multitool
+        ports:
+        - containerPort: 8083
+        command: ['sh', '-c', 'while :; do echo /output/success.txt; done']
+        volumeMounts:
+        - name: vol
+          mountPath: /output
+      volumes:
+      - name: vol
+        emptyDir: {}
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-set
+  labels:
+    app: daemonSet-ex
+spec:
+  selector:
+    matchLabels:
+      name: daemonSet-ex
+  template:
+    metadata:
+      labels:
+        name: daemonSet-ex
+    spec:
+      tolerations:
+      # these tolerations are to have the daemonset runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+
