@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage
+  labels:
+    app: storage-vol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-vol
+  template:
+    metadata:
+      labels:
+        app: storage-vol
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        ports:
+        - containerPort: 8082
+        command: ['sh', '-c', 'while :; do sleep 5; echo Success!123; done > /input/success.txt']
+        volumeMounts:
+        - name: vol
+          mountPath: /input
+      - name: network-multitool
+        image: wbitt/network-multitool
+        ports:
+        - containerPort: 8083
+        command: ['sh', '-c', 'while :; do echo /output/success.txt; done']
+        volumeMounts:
+        - name: vol
+          mountPath: /output
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  hostPath:
+    path: /data/pv
+  persistentVolumeReclaimPolicy: Retain

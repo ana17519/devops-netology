@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage
+  labels:
+    app: storage-vol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-vol
+  template:
+    metadata:
+      labels:
+        app: storage-vol
+    spec:
+      containers:
+      - name: network-multitool
+        image: wbitt/network-multitool
+        ports:
+        - containerPort: 8083
+        volumeMounts:
+        - name: vol
+          mountPath: /out
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: pvc
+
