@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-depl
+  labels:
+    app: storage-conf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-conf
+  template:
+    metadata:
+      labels:
+        app: storage-conf
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-index-file-1
+          mountPath: /usr/share/nginx/html/
+        - name: nginx-index-file-2
+          mountPath: /etc/config/secret
+      volumes:
+      - name: nginx-index-file-1
+        configMap:
+          name: index-html-cm
+      - name: nginx-index-file-2
+        secret:
+          secretName: my-tls-secret
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index-html-cm
+  namespace: default
+data:
+  index.html: |
+    <html>
+    <h1>WELCOME HOME</h1>
+    </br>
+    <h1>We are glad to see you</h1>
+    </html
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: my-tls-secret
+#  namespace: default
+#type: kubernetes.io/tls
+#data:
+#  tls.crt:
+#  tls.key:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: storage-conf
+  namespace: default
+spec:
+  selector:
+    app: storage-conf
+  type: ClusterIP
+  ports:
+    - port: 3333
+      targetPort: 80
+      protocol: TCP
+      name: nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: conf-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+#    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+#    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+#  ingressClassName: public
+  tls:
+  - hosts:
+      - micro.ru-central1.internal
+    secretName: my-tls-secret
+  rules:
+  - host: micro.ru-central1.internal
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: storage-conf
+            port:
+              name: nginx
