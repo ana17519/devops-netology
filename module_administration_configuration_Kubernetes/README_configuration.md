@@ -41,28 +41,11 @@
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
 
-![img_4.png](img_4.png)
-
-![img_7.png](img_7.png)
-
-![img_8.png](img_8.png)
-![img_6.png](img_6.png)
-
-![img_9.png](img_9.png)
-
-
 [манифест](k8_yaml//configuration_2.yaml)
-
-
-
-openssl req -x509 -sha256 -newkey rsa:4096 -keyout caa.key -out caa.crt -days 356 -nodes -subj '/CN=51.250.66.238'
-openssl req -new -newkey rsa:4096 -keyout server.key -out server.csr -nodes -subj '/CN=micro.ru-central1.internal'
-openssl x509 -req -sha256 -days 365 -in server.csr -CA caa.crt -CAkey caa.key -set_serial 01 -out server.crt
-1
-kubectl create secret generic orthweb-cred --from-file=tls.key=server.key --from-file=tls.crt=server.crt --from-file=caa.crt=caa.crt
 
 
 ![img_10.png](img_10.png)
 ![img_11.png](img_11.png)
 ![img_12.png](img_12.png)
 ![img_13.png](img_13.png)
+![img_14.png](img_14.png)
