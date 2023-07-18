@@ -23,6 +23,8 @@
 логи подов и их конфигурацию (`kubectl logs pod <pod_id>, kubectl describe pod <pod_id>`).
 5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
 
+[манифест](k8_yaml/access_control.yaml)
+
 Включение rbac:
 
 ![img.png](../images/img396.png)
