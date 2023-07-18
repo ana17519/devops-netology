@@ -23,8 +23,8 @@
 Подключить `Service` и показать вывод `curl` или в браузере.
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img_1.png](img385.png)
+![img_2.png](img386.png)
 
 [манифест service](k8_yaml/nginx-service.yaml)
 
@@ -42,10 +42,36 @@
 
 
 [манифест](k8_yaml//configuration_2.yaml)
+ 
+для создания сертификата использовала:
+
+```
+cd openssl
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt
+kubectl create secret tls my-tls-secret-2 --cert=certificate.crt --key=privateKey.key
+openssl pkcs12 -inkey privateKey.key -in certificate.crt -export -out certificate.pfx
+```
+
+![img_15.png](img387.png)
+![img_16.png](img388.png)
+
+![img_17.png](img389.png)
+
+далее перешла в приложение Связка ключей и перетянула сертификат:
+
+![img_18.png](img390.png)
+
+добавила хост в /etc/hosts:
+
+![img_19.png](img391.png)
+
+apply:
+
+![img_20.png](img392.png)
+
+доступ к приложению по HTTPS:
+
+![img_21.png](img393.png)
+![img_22.png](img394.png)
 
 
-![img_10.png](img_10.png)
-![img_11.png](img_11.png)
-![img_12.png](img_12.png)
-![img_13.png](img_13.png)
-![img_14.png](img_14.png)
