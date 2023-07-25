@@ -1,0 +1,7 @@
+image:
+  tag: "1.19.0"
+# helm list
+# helm template 01-simple
+# helm template -f 01-simple/new-values.yaml 01-simple
+# helm install demo-release 01-simple
+# kubectl get all
