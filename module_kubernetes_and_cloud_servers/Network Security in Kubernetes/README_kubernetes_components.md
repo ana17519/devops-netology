@@ -74,12 +74,12 @@
 * Db (flavor Standard-4-8) => 4 cpu 8 Gb, количество узлов node - 3
 * Сash (flavor Standard-4-8) => 4 cpu 8 Gb, количество узлов node - 3
 * Front (flavor Basic-1-2) => 1 cpu 2 Gb, количество узлов node - 3
-* Back (flavor Standard-4-8) => 4 cpu 8 Gb, количество узлов node - 3
+* Back (flavor Standard-4-8) => 4 cpu 8 Gb, количество узлов node - 4
 
 итого:
 
-* master -  3 по 6 cpu 12Gb
-* 4 группы worker node - 48 cpu 78 Gb
+* master - 6 cpu 12Gb (3 узла)
+* 4 группы worker node - 43 cpu 86 Gb (13 узлов)
 
 
 **Правила приёма работы**
