@@ -57,3 +57,17 @@ kubectl get nodes
 
 ![img.png](../../images/img425.png)
 ![img_1.png](../../images/img426.png)
+
+копирую содержимое конфиг-файла на локальную машину:
+
+![img.png](img.png)
+
+ожидаемо, не тот ip:
+![img_1.png](img_1.png)
+
+пробовала менять ip на внешний ip виртуалки master 158.160.34.61:
+
+![img_2.png](img_2.png)
+
+![img_3.png](img_3.png)
+
