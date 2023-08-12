@@ -60,12 +60,15 @@ kubectl get nodes
 
 ![img_14.png](../../images/img453.png)
 
+обновила ip адрес в конфиг-файле, указав внешний ip виртуальной машины (master):
+
+![img.png](../../images/img462.png)
+![img_3.png](../../images/img457.png)
+
 копирую содержимое конфиг-файла на локальную машину:
 
-![img_15.png](../../images/img454.png)
+![img_1.png](../../images/img460.png)
 
-![img_16.png](../../images/img455.png)
-
-подскажите как, настроить kubespray на генерацию сертификата на внешний IP?
+![img_2.png](../../images/img461.png)
 
 

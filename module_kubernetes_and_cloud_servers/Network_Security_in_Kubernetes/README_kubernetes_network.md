@@ -18,7 +18,14 @@
 1. Создать deployment'ы приложений frontend, backend и cache и соответсвующие сервисы.
 2. В качестве образа использовать network-multitool.
 3. Разместить поды в namespace App.
-4. Создать политики, чтобы обеспечить доступ frontend -> backend -> cache. Другие виды подключений должны быть запрещены.
+4. Создать политики, чтобы обеспечить доступ frontend -> backend -> cache. 
+Другие виды подключений должны быть запрещены.
 5. Продемонстрировать, что трафик разрешён и запрещён.
 
 ![img.png](../../images/img456.png)
+
+kubectl get pods -n -o wide
+
+kubectl -n app exec frontend- -- curl ip-back
+
+проверить наличие calico

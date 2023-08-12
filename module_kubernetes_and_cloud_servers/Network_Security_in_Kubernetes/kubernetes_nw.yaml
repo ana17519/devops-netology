@@ -104,3 +104,8 @@ spec:
 # Running the multitool on Kubernetes using the POD network is as simple as:
 # kubectl run nginx-multi-network-task1-p --image wbitt/network-multitool
 #  kubectl exec --stdin --tty nginx-multi-network-task1-p -- /bin/bash
+
+# Для доступа к кластеру извне нужно добавить параметр
+# supplementary_addresses_in_ssl_keys: [ip] в файл inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+# Заново запустить установку кластера.
+# После этого кластер будет доступен извне.
