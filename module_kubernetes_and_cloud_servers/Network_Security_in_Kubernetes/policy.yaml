@@ -1,3 +1,16 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      app: frontend # сетевая политика применяется к любому поду с меткой app: frontend
+  policyTypes:
+    - Ingress # входящий (ingress) трафик не разрешен
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -6,18 +19,14 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-        app: backend
+      app: backend # сетевая политика применяется к любому поду с меткой app: backend
   policyTypes:
     - Ingress
-  ingress:
+  ingress: #определяет разрешенный входящий трафик в целевые pod'ы
     - from:
         - podSelector:
             matchLabels:
-              app: frontend
-        ports:
-          - port: 80
-            protocol: TCP
-#запрещает входящий трафик кроме фронтенда
+              app: frontend  # входящий (ingress) трафик разрешен только из подs с меткой app: frontend
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -27,14 +36,11 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-        app: cache
+      app: cache
   policyTypes:
     - Ingress
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              app: backend
-        ports:
-          - port: 80
-            protocol: TCP
+              app: backend # входящий (ingress) трафик разрешен только от подs с меткой app: backend

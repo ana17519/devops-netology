@@ -24,8 +24,19 @@
 
 ![img.png](../../images/img456.png)
 
-kubectl get pods -n -o wide
 
-kubectl -n app exec frontend- -- curl ip-back
+![img_4.png](../../images/img463.png)
 
-проверить наличие calico
+
+проверка доступа frontend -> backend и backend -> cache:
+
+![img_5.png](../../images/img464.png)
+
+проверка отсутствия доступа cache -> backend, cache -> frontend,  backend -> frontend и frontend -> cache:
+
+![img_6.png](../../images/img465.png)
+
+[манифест deployment](kubernetes_nw.yaml)
+
+[манифест network policy](policy.yaml)
+
