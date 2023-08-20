@@ -26,13 +26,14 @@
 * Создать в этой публичной подсети виртуалку с публичным IP, 
 подключиться к ней и убедиться, что есть доступ к интернету.
 
-
 ![img.png](../../images/img476.png)
 ![img_1.png](../../images/img477.png)
-
-![img_7.png](../../images/img475.png)
-![img.png](../../images/img478.png)
-![img.png](../../images/img479.png)
+```
+export YC_TOKEN=$(yc iam create-token)
+export YC_CLOUD_ID=$(yc config get cloud-id)
+export YC_FOLDER_ID=$(yc config get folder-id)
+```
+![img_6.png](../../images/img489.png)
 
 3. Приватная подсеть.
 
@@ -43,11 +44,36 @@
 подключиться к ней через виртуалку, созданную ранее, и убедиться, 
 что есть доступ к интернету.
 
+при создании вм private - добавить публичный ключ от public:
 
-![img.png](../../images/img480.png)
-![img.png](../../images/img481.png)
-![img.png](../../images/img482.png)
-![img_1.png](../../images/img483.png)
+* сгенерировать ключевую пару на машине `public`
+* добавить в файл `cloudconfig`
+* скопировать в ~/.ssh `cp cloudconfig ~/.ssh`
+* изменить блок метадата у машины `private` 
+ ```
+  metadata = {
+    user-data = "${file("~/.ssh/cloudconfig")}"
+    #    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+  }
+   ```
+* добавить `route_table_id = yandex_vpc_route_table.route-table-nat.id` в приватную подсеть
+* выполнить `terraform apply` (перед этим удалить созданную ранее машину private)
+* выполнить подключение к машине `public`
+* выполнить подключение к машине `private` и проверить `ping google.com`
+
+![img_7.png](../../images/img490.png)
+![img_8.png](../../images/img491.png)
+![img_5.png](../../images/img492.png)
+
+![img_1.png](../../images/img493.png)
+![img.png](../../images/img494.png)
+![img_1.png](../../images/img495.png)
+
+**Resource Terraform для Yandex Cloud:**
+
+* [VPC subnet](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/vpc_subnet).
+* [Route table.](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/vpc_route_table)
+* [Compute Instance](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/compute_instance).
 
 файлы:
 
@@ -58,41 +84,3 @@
 [vaersions.tf](terraform/versions.tf) - versions.tf
 
 [cloudconfig](cloudconfig)
-
-в общем я споткнулась на последнем шаге:
-
-* Создать в этой приватной подсети виртуалку с внутренним IP, подключиться к ней через виртуалку, созданную ранее, и убедиться, что есть доступ к интернету.
-
-первоначально создавала вм с такой конфигурацией - публичный ключ взять из папки:
-
-```
-metadata = {
-  ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
-}
-
-```
-
-но в последнем задании при попытке коннекта там пароль просят, нагуглила вот такую штуку:
-[vm-metadata](https://cloud.yandex.com/en/docs/compute/concepts/vm-metadata)
-
-преобразовав вот так:
-
-```
-  metadata = {
-    user-data = "${file("~/.ssh/cloudconfig")}"
-  }
-```
-
-но теперь пароль стал требовать даже при коннекте на публичную машину
-
-```
-anastasiasuhodola@MacBook-Pro-Anastasia terraform %  ssh ubuntu@158.160.39.195 
-ubuntu@158.160.39.195's password: 
-```
-можете подсказать, в какую сторону смотреть?
-
-**Resource Terraform для Yandex Cloud:**
-
-* VPC subnet.
-* Route table.
-* Compute Instance.
