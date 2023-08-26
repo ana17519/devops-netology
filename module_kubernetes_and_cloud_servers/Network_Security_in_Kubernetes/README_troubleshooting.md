@@ -19,8 +19,6 @@
 4. Продемонстрировать, что проблема решена.
 
 ![img.png](img.png)
-![img_1.png](img_1.png)
 
-web-consumer не может подключиться к auth-db:
-
-`curl: (6) Couldn't resolve host 'auth-db'`
+Не было namespace web и data.
+После создания - все запустилось.
