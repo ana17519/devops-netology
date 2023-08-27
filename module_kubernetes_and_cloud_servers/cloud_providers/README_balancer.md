@@ -46,32 +46,40 @@ export YC_CLOUD_ID=$(yc config get cloud-id)
 export YC_FOLDER_ID=$(yc config get folder-id)
 ```
 
+```
+cp cloudconfigone ~/.ssh
+```
 бакет:
 
-![img_2.png](img_2.png)
-![img_1.png](img_1.png)
-![img.png](img.png)
+![img_2.png](../../images/img498.png)
+![img_1.png](../../images/img497.png)
+![img.png](../../images/img496.png)
 
-![img_5.png](img_5.png)
-![img_12.png](img_12.png)
+![img_5.png](../../images/img501.png)
+![img_12.png](../../images/img507.png)
 
 группа ВМ:
 
-![img_6.png](img_6.png)
-![img_7.png](img_7.png)
-![img_13.png](img_13.png)
-![img_4.png](img_4.png)
+![img_10.png](../../images/img505.png)
+![img_8.png](../../images/img503.png)
+![img_9.png](../../images/img504.png)
+![img_4.png](../../images/img500.png)
 
 balancer:
 
-![img_14.png](img_14.png)
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
-![img_10.png](img_10.png)
+![img_16.png](../../images/img509.png)
+![img_17.png](../../images/img510.png)
+![img_18.png](../../images/img511.png)
 
-открывается дефолтная страница, а не линк на картинку:
+переход по ip балансировщика:
 
-![img_11.png](img_11.png)
+![img_15.png](../../images/img508.png)
+
+
+после удаления вм ничего не изменилось:
+
+![img.png](../../images/img512.png)
+![img_6.png](../../images/img502.png)
 
 файлы:
 

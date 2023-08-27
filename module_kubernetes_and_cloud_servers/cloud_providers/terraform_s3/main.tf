@@ -64,15 +64,15 @@ resource "yandex_lb_target_group" "group" {
   name = "group"
   target {
     subnet_id = "e9bg5kfsafq13pmu7jas"
-    address   = "192.168.10.30"
+    address   = "192.168.10.21"
   }
   target {
     subnet_id = "e9bg5kfsafq13pmu7jas"
-    address   = "192.168.10.12"
+    address   = "192.168.10.6"
   }
   target {
     subnet_id = "e9bg5kfsafq13pmu7jas"
-    address   = "192.168.10.25"
+    address   = "192.168.10.29"
   }
 }
 //https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/lb_network_load_balancer
